@@ -15,7 +15,7 @@
   <!-- Custom styles for this template-->
   <link href="css/sb-admin.css" rel="stylesheet">
 </head>
-
+<center><img src="images/logo.png"></img></center>
 <body class="bg-dark">
   <div class="container">
     <div class="card card-login mx-auto mt-5">
