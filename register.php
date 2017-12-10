@@ -7,7 +7,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
   <meta name="description" content="">
   <meta name="author" content="">
-  <title>Admin</title>
+  <title>Register</title>
   <!--  Bootstrap core CSS -->
   <link href="vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
 <!--    Custom fonts for this template -->
@@ -23,7 +23,7 @@
       <div class="card-body">
 
         <!--form starts here -->
-        <form name="myform" action="process/registerprocess.php" method="post">
+        <form name="myform" action="registerprocess.php" method="post">
           <div class="form-group">
             <div class="form-row">
               <div class="col-md-6">
@@ -37,11 +37,6 @@
                 placeholder="Enter Last Name">
               </div>
             </div>
-          </div>
-          <div class="form-group">
-            <label for="exampleInputEmail1">Email Address</label>
-            <input class="form-control" id="email" type="email" name="email"
-            placeholder="Enter Active Email Address">
           </div>
 
           <div class="form-group">
@@ -59,7 +54,7 @@
               </div>
               <div class="col-md-6">
                 <label for="exampleConfirmPassword">Confirm password</label>
-                <input class="form-control" id="exampleConfirmPassword" type="password" placeholder="Confirm password">
+                <input class="form-control" id="password2" name="password2" type="password" placeholder="Confirm password">
               </div>
             </div>
 

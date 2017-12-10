@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+<link rel="icon" type="image/x-icon" href="favicon.ico">
 
 <head>
   <meta charset="utf-8">
@@ -15,20 +16,30 @@
   <!-- Custom styles for this template-->
   <link href="css/sb-admin.css" rel="stylesheet">
 </head>
+
+<?php 
+include('dbconnect.php');
+
+if(isset($_SESSION['username'])){
+ 
+  header("location:controller.php?home");
+}
+
+?>  
 <center><img src="images/logo.png"></img></center>
 <body class="bg-dark">
   <div class="container">
     <div class="card card-login mx-auto mt-5">
       <div class="card-header">Login</div>
       <div class="card-body">
-        <form>
+        <form action="auth.php" method="post">
           <div class="form-group">
             <label for="exampleInputEmail1">Username</label>
-            <input class="form-control" id="exampleInputEmail1" type="email" aria-describedby="emailHelp" placeholder="Enter username">
+            <input class="form-control" name="username" type="text" aria-describedby="emailHelp" placeholder="Enter username">
           </div>
           <div class="form-group">
             <label for="exampleInputPassword1">Password</label>
-            <input class="form-control" id="exampleInputPassword1" type="password" placeholder="Password">
+            <input class="form-control" name="password" type="password" placeholder="Password">
           </div>
           <div class="form-group">
             <div class="form-check">
@@ -36,7 +47,7 @@
                 <input class="form-check-input" type="checkbox"> Remember Password</label>
             </div>
           </div>
-          <a class="btn btn-primary btn-block" href="index.php">Login</a>
+          <input class="btn btn-primary btn-block" value="Login" type="submit">
         </form>
         <div class="text-center">
           <a class="d-block small mt-3" href="register.php">Register an Account</a>
@@ -50,6 +61,9 @@
   <script src="vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
   <!-- Core plugin JavaScript-->
   <script src="vendor/jquery-easing/jquery.easing.min.js"></script>
+
 </body>
+
+
 
 </html>
