@@ -1,20 +1,17 @@
 <?php
-include_once('dbconnect.php');
-
-if(isset($_GET['home'])){
+include('connection/dbconnect.php');
+	if(isset($_GET['home'])){
 		header("location:admin.php");
-		
 	}
+	
 	else{
-if(isset($_GET['logout'])){
-session_destroy();
-header("location:index.php");
-
-}
+		if(isset($_GET['logout'])){
+		echo ("<script LANGUAGE='JavaScript'>
+			    window.alert('You have been logged out.');
+			    </script>");
+		session_destroy();
+		header("location:index.php"); }
 	
+	}
 	
-	
-
-}
-
 ?>
