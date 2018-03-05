@@ -1,9 +1,33 @@
 <!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  <meta name="description" content="">
+  <meta name="author" content="">
+  <title>IoTURN Admin</title>
+  <!-- Bootstrap core CSS-->
+  <link href="vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+  <!-- Custom fonts for this template-->
+  <link href="vendor/font-awesome/css/font-awesome.min.css" rel="stylesheet" type="text/css">
+  <!-- Page level plugin CSS-->
+  <link href="vendor/datatables/dataTables.bootstrap4.css" rel="stylesheet">
+  <!-- Custom styles for this template-->
+  <link href="css/sb-admin.css" rel="stylesheet">
+  <!-- Modal Style Override Css -->
+  <link rel="stylesheet" type="text/css" href="css/modal.css">
+  <!-- Dropdown Style Override Css -->
+  <link rel="stylesheet" type="text/css" href="css/dropdown.css">
+
+</head>
+
 <?php
-  include('connection/dbconnect.php');
-  // global $connect;
-    if(!(isset($_SESSION['username']))){
-    header("location:index.php");
+include('connection/dbconnect.php');
+// global $connect;
+  if(!(isset($_SESSION['username']))){
+  header("location:index.php");
   }
 
   $first;
@@ -13,24 +37,6 @@
   $row = mysqli_fetch_row($result);
     $first=$row[0];
 ?>
-<html lang="en">
-
-<head>
-
-  <meta charset="utf-8">
-  <meta http-equiv="X-UA-Compatible" content="IE=edge">
-  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-  <meta name="description" content="">
-  <meta name="author" content="">
-  <title>IoTURN Admin</title>
-  <link href="vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet"> <!-- Bootstrap core CSS-->
-  <link href="vendor/font-awesome/css/font-awesome.min.css" rel="stylesheet" type="text/css">  <!-- Custom fonts for this template-->
-  <link href="vendor/datatables/dataTables.bootstrap4.css" rel="stylesheet"> <!-- Page level plugin CSS-->
-  <link href="css/sb-admin.css" rel="stylesheet"> <!-- Custom styles for this template-->
-  <link rel="stylesheet" type="text/css" href="css/modal.css"> <!-- Modal Style Override Css -->
-  <link type="text/css" rel="stylesheet" href="https://api.mqcdn.com/sdk/mapquest-js/v1.3.0/mapquest.css"/>
-</head>
-
 
 <body class="fixed-nav sticky-footer bg-dark" id="page-top">
   <!-- Navigation-->
@@ -53,7 +59,7 @@
             <span class="nav-link-text">Sensor Status</span>
           </a>
         </li>
-        <li class="nav-item" data-toggle="tooltip" data-placement="right" title="History Logs">
+        <li class="nav-item" data-toggle="tooltip" data-placement="right" title="Data Logs">
           <a class="nav-link" href="history.php">
             <i class="fa fa-fw fa-table"></i>
             <span class="nav-link-text">History Logs</span>
@@ -131,44 +137,60 @@
       </ul>
     </div>
   </nav>
-  
-  <div class="content-wrapper">
+  <div class="content-wrapper"><!--  start content wrapper -->
     <div class="container-fluid">
       <!-- Breadcrumbs-->
       <ol class="breadcrumb">
         <li class="breadcrumb-item">
-          <a href="#">Dashboard</a>
+          <a href="#">Sensor Status</a>
         </li>
       </ol>
-     <div class="card mb-3" id="container">
-            <div class="card-body">
-              <!-- hello PUT MAP HERE -->
-              <div id="map">
-                
+      <div class="card mb-3">
+        <div class="card-body">
+          <!-- <div class="table-responsive">
+            <div id="dataTable_wrapper" class="dataTables_wrapper container-fluid dt-bootstrap4 no-footer">
+              <div class="row">
+                <div class="col-sm-12">
+                  <table class="table table-bordered dataTable no-footer" width="100%" id ="dataTable" cellspacing="0" role="grid" aria-describedby="dataTable_info" style="width: 100%;">
+                    <thead>
+                      <tr role="row">
+                        <th class="sorting" tabindex="0" aria-controls="dataTable" rowspan="1" colspan="1" aria-label="Date: activate to sort column ascending" style="width: 97px;">Date</th>
+                        <th class="sorting" tabindex="0" aria-controls="dataTable" rowspan="1" colspan="1" aria-label="Time: activate to sort column ascending" style="width: 144px;">Time</th>
+                        <th class="sorting_desc" tabindex="0" aria-controls="dataTable" rowspan="1" colspan="1" aria-label="Pressure: activate to sort column ascending" aria-sort="descending" style="width: 98px;">Pressure</th>
+                      </tr>
+                    </thead>
+                    <tbody>
+                      <tr role="row" class="odd">
+                        <td class="">Tiger Nixon</td>
+                        <td>System Architect</td>
+                        <td class="sorting_1">Edinburgh</td>
+                      </tr>
+                    </tbody>
+                  </table>
+                </div>
               </div>
-            </div>
-            <?php 
-              date_default_timezone_set('Asia/Manila');
-              $date = date('h:i A F d,o  ');
-            ?>
-              <div class="card-footer small text-muted">Last Updated at <?php echo $date;?></div>
-      </div>
-      </div>
-      <audio id="alertAudio">
-        <source src="audio/alert.mp3" type="audio/mpeg">
-      </audio>
+            </div> -->
+          </div>
+        </div>
+
+        </div>
+        <?php 
+          date_default_timezone_set('Asia/Manila');
+          $date = date('h:i A F d,o  ');
+        ?>
+        <div class="card-footer small text-muted">Last Updated at <?php echo $date;?></div>
     </div>
-  </div>
+  </div> <!-- end content wrapper -->
     <!-- Scroll to Top Button-->
     <a class="scroll-to-top rounded" href="#page-top">
       <i class="fa fa-angle-up"></i>
     </a>
     <!-- Logout Modal-->
     <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
-      <div class="modal-show modal-dialog" role="document">
+      <div class="modal-dialog" role="document">
         <div class="modal-content">
           <div class="modal-header">
-            <h6 class="modal-title" id="exampleModalLabel">Ready to Leave?</h6>
+            <h5 class="modal-title" id="exampleModalLabel">Ready to Leave?</h5>
             <button class="close" type="button" data-dismiss="modal" aria-label="Close">
               <span aria-hidden="true">×</span>
             </button>
@@ -181,27 +203,6 @@
         </div>
       </div>
     </div>
-
-  <!-- Warning Modal -->
-  <div class="modal fade" id="myModal" role="dialog">
-    <div class="modal-dialog"> 
-      <!-- Modal content-->
-      <div class="modal-content">
-        <div class="modal-header">
-          <button type="button" class="close" data-dismiss="modal">&times;</button>
-          <h4 class="modal-title">Modal Header</h4>
-        </div>
-        <div class="modal-body">
-          <p>Some text in the modal.</p>
-        </div>
-        <div class="modal-footer">
-          <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
-        </div>
-      </div>
-      
-    </div>
-  </div>
- <!--  End Warning Modal -->
     <!-- Bootstrap core JavaScript-->
     <script src="vendor/jquery/jquery.min.js"></script>
     <script src="vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
@@ -216,8 +217,7 @@
     <!-- Custom scripts for this page-->
     <script src="js/sb-admin-datatables.min.js"></script>
     <script src="js/sb-admin-charts.min.js"></script>
-    <script type="text/javascript" src="js/_map.js"></script>
-    <script src="https://api.mqcdn.com/sdk/mapquest-js/v1.3.0/mapquest.js"></script>
+    <script type="text/javascript" src="js/_dataFeed.js"></script>
   </div>
 </body>
 
